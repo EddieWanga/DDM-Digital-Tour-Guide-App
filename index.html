@@ -50,6 +50,43 @@
             transform: translateY(-8px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
+        .proposal-section {
+            background-color: white;
+            padding: 2rem 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 3rem;
+        }
+        .proposal-section h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+        .proposal-section h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .proposal-section p, .proposal-section li {
+             line-height: 1.8;
+             color: #4a5568;
+        }
+         .proposal-section ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+         .proposal-section pre {
+            background-color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: monospace;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
@@ -64,6 +101,7 @@
                 <a href="#about" class="nav-link" data-i18n="nav.about">關於專案</a>
                 <a href="#features" class="nav-link" data-i18n="nav.features">核心功能</a>
                 <a href="#tech-stack" class="nav-link" data-i18n="nav.tech">技術堆疊</a>
+                <a href="#proposal" class="nav-link" data-i18n="nav.proposal">專案計畫書</a>
                 <a href="#contact" class="nav-link" data-i18n="nav.contact">聯絡我們</a>
                 <div class="relative">
                     <button id="lang-toggle" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors duration-200">
@@ -91,13 +129,18 @@
     <section id="about" class="py-20 md:py-24">
         <div class="container">
             <h2 class="section-title text-3xl md:text-4xl font-bold mb-8" data-i18n="about.title">關於專案</h2>
-            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-lg leading-relaxed">
-                <p class="text-lg text-gray-700 mb-6" data-i18n="about.intro">本專案旨在開發一款可應用於任何旅遊景點的智慧數位導覽應用程式。以法鼓山園區為範例，我們致力於解決傳統導覽所面臨的挑戰，如靜態內容、高昂的人力與維護成本，並為訪客提供一個現代化、互動式的跨平台導覽體驗。</p>
-                <h3 class="text-2xl font-semibold mb-4 text-blue-600" data-i18n="about.problem.title">待解決的問題</h3>
-                <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                    <li data-i18n="about.problem.1">**靜態體驗：** 傳統語音導覽缺乏即時情境與個人化。</li>
-                    <li data-i18n="about.problem.2">**物流限制：** 依賴真人導遊，限制了可用性與語言選項。</li>
-                    <li data-i18n="about.problem.3">**維護成本高：** 更新內容是一個耗時的手動過程。</li>
+            <div class="proposal-section">
+                <h3 data-i18n="proposal.execSummary.title">1. 執行摘要</h3>
+                <p data-i18n="proposal.execSummary.content">本提案概述為新北市法鼓山開發跨平台數位導覽應用程式的計畫。該應用程式將利用現代技術，為遊客在行動裝置和Windows桌面設備上提供互動式、個人化且引人入勝的導覽體驗。透過整合FlutterFlow進行快速UI開發、Supabase作為強大的後端，以及AI提供動態語音導覽，本專案將把傳統導覽轉變為一趟智慧、易於使用且支援多語言的旅程。</p>
+            </div>
+            <div class="proposal-section">
+                <h3 data-i18n="proposal.problem.title">2. 問題陳述</h3>
+                <p data-i18n="proposal.problem.intro">大型宗教或文化場域的傳統導覽面臨多項挑戰：</p>
+                <ul>
+                    <li data-i18n="proposal.problem.1">**靜態體驗：** 預錄的語音導覽和印刷資料缺乏個人化和即時情境。</li>
+                    <li data-i18n="proposal.problem.2">**物流限制：** 對真人導遊的依賴限制了可用性、語言選項和導覽排程。</li>
+                    <li data-i18n="proposal.problem.3">**可及性差距：** 身心障礙或偏好自主探索的遊客可能難以完全投入於場域豐富的歷史與教義中。</li>
+                    <li data-i18n="proposal.problem.4">**維護開銷：** 更新內容（如旁白、事實資訊）是一個耗時的手動過程。</li>
                 </ul>
             </div>
         </div>
@@ -108,25 +151,25 @@
         <div class="container">
             <h2 class="section-title text-3xl md:text-4xl font-bold text-blue-800" data-i18n="features.title">核心功能</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="feature-card p-6 rounded-2xl shadow-lg text-center">
-                    <div class="text-5xl mb-4 text-blue-600" data-i18n="features.icon.map">🗺️</div>
-                    <h3 class="text-xl font-semibold mb-2" data-i18n="features.1.title">智慧導覽</h3>
-                    <p class="text-gray-600" data-i18n="features.1.desc">結合GPS定位或手動選擇，自動觸發AI生成的語音導覽。</p>
+                 <div class="feature-card p-6 rounded-2xl shadow-lg text-center">
+                    <div class="text-5xl mb-4 text-blue-600">🗺️</div>
+                    <h3 class="text-xl font-semibold mb-2" data-i18n="features.1.title">互動地圖</h3>
+                    <p class="text-gray-600" data-i18n="features.1.desc">顯示法鼓山地圖及所有關鍵景點（POIs）。</p>
                 </div>
                 <div class="feature-card p-6 rounded-2xl shadow-lg text-center">
-                    <div class="text-5xl mb-4 text-blue-600" data-i18n="features.icon.map">📍</div>
-                    <h3 class="text-xl font-semibold mb-2" data-i18n="features.2.title">互動地圖</h3>
-                    <p class="text-gray-600" data-i18n="features.2.desc">提供直觀地圖，標示所有景點，讓使用者輕鬆瀏覽。</p>
+                    <div class="text-5xl mb-4 text-blue-600">🔊</div>
+                    <h3 class="text-xl font-semibold mb-2" data-i18n="features.2.title">AI語音導覽</h3>
+                    <p class="text-gray-600" data-i18n="features.2.desc">利用大型語言模型（LLM）為每個景點生成獨特、具情境感知能力的描述。</p>
                 </div>
                 <div class="feature-card p-6 rounded-2xl shadow-lg text-center">
-                    <div class="text-5xl mb-4 text-blue-600" data-i18n="features.icon.media">🖼️</div>
+                    <div class="text-5xl mb-4 text-blue-600">🖼️</div>
                     <h3 class="text-xl font-semibold mb-2" data-i18n="features.3.title">多媒體內容</h3>
-                    <p class="text-gray-600" data-i18n="features.3.desc">每個景點都配有豐富的圖片、影片和文字解說。</p>
+                    <p class="text-gray-600" data-i18n="features.3.desc">顯示與每個景點相關的高解析度圖片和影片。</p>
                 </div>
                 <div class="feature-card p-6 rounded-2xl shadow-lg text-center">
-                    <div class="text-5xl mb-4 text-blue-600" data-i18n="features.icon.language">🗣️</div>
+                    <div class="text-5xl mb-4 text-blue-600">🗣️</div>
                     <h3 class="text-xl font-semibold mb-2" data-i18n="features.4.title">多語言支援</h3>
-                    <p class="text-gray-600" data-i18n="features.4.desc">應用程式介面與語音導覽皆支援多種語言，服務全球訪客。</p>
+                    <p class="text-gray-600" data-i18n="features.4.desc">應用程式介面與AI語音導覽皆支援多種語言。</p>
                 </div>
             </div>
         </div>
@@ -142,29 +185,120 @@
                         <img src="flutterflow.png" alt="FlutterFlow Logo" class="h-full w-auto">
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-blue-600" data-i18n="tech.frontend.title">前端</h3>
-                    <p class="text-gray-700 text-lg" data-i18n="tech.frontend.desc">使用 **FlutterFlow**，實現跨平台（iOS, Android, Windows）的快速開發，並確保介面統一性。</p>
+                    <p class="text-gray-700 text-lg" data-i18n="tech.frontend.desc">使用 **FlutterFlow**，實現跨平台（iOS, Android, Windows）的快速開發，並確保介面統一性。其低程式碼/無程式碼的視覺化建構器能大幅縮短前端開發時間，同時保持「一次編寫，到處運行」的優勢。</p>
                 </div>
                 <div class="p-8 bg-white rounded-2xl shadow-lg">
                     <div class="mb-4 flex justify-center items-center space-x-4 h-20">
                         <img src="supabase-logo_brandlogos.net_wahxg-scaled.png" alt="Supabase Logo" class="h-full w-auto">
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-blue-600" data-i18n="tech.backend.title">後端</h3>
-                    <p class="text-gray-700 text-lg" data-i18n="tech.backend.desc">採用 **Supabase** 作為一體化後端，提供資料庫、身份驗證及無伺服器函數。</p>
+                    <p class="text-gray-700 text-lg" data-i18n="tech.backend.desc">採用 **Supabase** 作為一體化後端，提供身份驗證、即時資料庫、儲存空間及無伺服器函數。無伺服器函數將用於託管Gemma3n模型並處理對TTS服務的安全API呼叫。</p>
                 </div>
                 <div class="p-8 bg-white rounded-2xl shadow-lg">
                     <div class="mb-4 flex justify-center items-center space-x-4 h-20">
                         <img src="gemma3+.png" alt="Gemma3n Logo" class="h-full w-auto">
-                        <img src="https://placehold.co/120x60/3498db/ffffff?text=TTS" alt="TTS Logo" class="h-full w-auto">
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-blue-600" data-i18n="tech.ai.title">AI 核心</h3>
-                    <p class="text-gray-700 text-lg" data-i18n="tech.ai.desc">整合 **Gemma3n** 模型與獨立的 **TTS 服務**，實現動態語音解說。</p>
+                    <p class="text-gray-700 text-lg" data-i18n="tech.ai.desc">整合 **Gemma3n** 模型與獨立的 **TTS 服務**，實現動態語音解說。Gemma3n將根據精細調整的提示生成獨特內容，再由TTS API轉換為高品質、聽起來自然的音訊。</p>
                 </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Proposal Section -->
+    <section id="proposal" class="py-20 md:py-24 bg-gray-200">
+        <div class="container">
+            <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800" data-i18n="nav.proposal">專案計畫書</h2>
+            
+            <div class="proposal-section">
+                <h3 data-i18n="proposal.arch.title">7. 系統架構</h3>
+                <p data-i18n="proposal.arch.desc">系統將遵循主從式架構，以FlutterFlow應用程式作為客戶端。</p>
+                <pre data-i18n="proposal.arch.flowchart">
++-----------------+       +-----------------+       +-----------------+
+| FlutterFlow App |       |                 |       |                 |
+| (Mobile/Win)    +------>|   Supabase      +------>|  Gemma3n &      |
+|                 |       | (Backend)       |       |  TTS Service    |
++-----------------+       |                 |       |                 |
+| - Visual UI             | - Auth          |       +-----------------+
+| - GPS Location          | - Database      |
+| - API Call Logic        | - Storage       |
+|                         | - Serverless Fx |
++-----------------+       +-----------------+
+                </pre>
+                <h4 data-i18n="proposal.arch.workflow.title">工作流程:</h4>
+                 <ul>
+                    <li data-i18n="proposal.arch.workflow.1"><b>地圖顯示：</b> FlutterFlow應用程式從Supabase資料庫獲取地圖資料和景點位置。</li>
+                    <li data-i18n="proposal.arch.workflow.2"><b>觸發：</b> 應用程式的位置服務（行動裝置上的GPS，Windows上的手動點擊）觸發一個請求。</li>
+                    <li data-i18n="proposal.arch.workflow.3"><b>LLM呼叫：</b> 應用程式向Supabase無伺服器函數發送請求。此函數接著安全地呼叫Gemma3n模型以生成旁白文本。</li>
+                    <li data-i18n_continue="proposal.arch.workflow.4"><b>TTS轉換：</b> Supabase函數將文本發送到一個獨立的TTS服務（例如Google Cloud TTS）並接收音訊數據。</li>
+                    <li data-i18n="proposal.arch.workflow.5"><b>音訊播放：</b> FlutterFlow應用程式從Supabase函數接收音訊數據並播放給使用者。</li>
+                </ul>
+            </div>
+            
+             <div class="proposal-section">
+                <h3 data-i18n="proposal.ui.title">8. 使用者介面（UI）線框圖</h3>
+                <h4 data-i18n="proposal.ui.screen1.title">畫面 1: 地圖與主畫面視圖</h4>
+                <ul>
+                    <li data-i18n="proposal.ui.screen1.1"><b>版面配置：</b> 法鼓山的全螢幕地圖。</li>
+                    <li data-i18n="proposal.ui.screen1.2"><b>元素：</b> 使用者位置標記（行動裝置）、景點標記（可點擊）、浮動的「導覽路線」按鈕。</li>
+                </ul>
+                <h4 data-i18n="proposal.ui.screen2.title">畫面 2: 景點（POI）詳細視圖</h4>
+                 <ul>
+                    <li data-i18n="proposal.ui.screen2.1"><b>版面配置：</b> 從螢幕底部滑出的模態視窗或專用頁面。</li>
+                    <li data-i18n="proposal.ui.screen2.2"><b>元素：</b> 景點名稱、圖片庫、旁白播放/暫停按鈕、旁白文字稿、「了解更多」按鈕。</li>
+                </ul>
+                <h4 data-i18n="proposal.ui.screen3.title">畫面 3: 導覽路線列表</h4>
+                <ul>
+                    <li data-i18n="proposal.ui.screen3.1"><b>版面配置：</b> 可滾動的預定義導覽路線列表。</li>
+                    <li data-i18n="proposal.ui.screen3.2"><b>元素：</b> 導覽標題、預計時長、包含的景點列表、「開始導覽」按鈕。</li>
+                </ul>
+            </div>
+
+            <div class="proposal-section">
+                <h3 data-i18n="proposal.db.title">11. 後端資料庫結構</h3>
+                <h4 data-i18n="proposal.db.table1.title">資料表: pois</h4>
+                <pre data-i18n="proposal.db.table1.content">
+id: UUID (主鍵)
+name_en: TEXT
+name_zh_tw: TEXT
+description_en: TEXT
+description_zh_tw: TEXT
+latitude: NUMERIC
+longitude: NUMERIC
+image_urls: TEXT[] (來自Supabase儲存的圖片URL陣列)
+tour_route_ids: UUID[] (指向tours資料表的外鍵)
+                </pre>
+                <h4 data-i18n="proposal.db.table2.title">資料表: tours</h4>
+                <pre data-i18n="proposal.db.table2.content">
+id: UUID (主鍵)
+name_en: TEXT
+name_zh_tw: TEXT
+description_en: TEXT
+description_zh_tw: TEXT
+poi_ids: UUID[] (依順序排列的pois ID陣列)
+estimated_time_minutes: INT
+                </pre>
+            </div>
+
+            <div class="proposal-section">
+                <h3 data-i18n="proposal.phases.title">12. 開發階段</h3>
+                <h4 data-i18n="proposal.phases.phase1.title">第一階段：最小可行性產品（MVP）</h4>
+                <p data-i18n="proposal.phases.phase1.desc"><b>時程：</b> 2-3個月。<b>重點：</b> 核心功能。<b>交付成果：</b> 適用於行動裝置和Windows的FlutterFlow應用程式、包含約10個關鍵景點的互動地圖、基本的Supabase資料庫整合、單一語言旁白的功能性Gemma3n和TTS整合。</p>
+                <h4 data-i18n="proposal.phases.phase2.title">第二階段：功能增強</h4>
+                <p data-i18n="proposal.phases.phase2.desc"><b>時程：</b> 2-3個月。<b>重點：</b> 改善使用者體驗並增加功能。<b>交付成果：</b> 多語言支援、精選導覽路線功能、離線使用的地圖資料預快取、改進的UI/UX和視覺設計。</p>
+                <h4 data-i18n="proposal.phases.phase3.title">第三階段：持續內容與維護</h4>
+                <p data-i18n="proposal.phases.phase3.desc"><b>時程：</b> 發布後。<b>重點：</b> 內容創建和系統維護。<b>交付成果：</b> 用於輕鬆更新景點資料的內容管理系統（CMS）、整合新的多媒體資產、擴展以包含更多景點和新的導覽路線。</p>
+            </div>
+            
+            <div class="proposal-section">
+                <h3 data-i18n="proposal.conclusion.title">15. 結論</h3>
+                <p data-i18n="proposal.conclusion.content">本提案提出了一項開發最先進數位導覽的全面計畫。結合FlutterFlow的快速開發、Supabase的整合後端，以及Gemma3n強大的人工智慧，將為遊客帶來轉型性且難忘的體驗。此專案不僅將增強參與度，也將為文化與宗教場域的導覽樹立新標竿。</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 md:py-24 bg-gray-200">
+    <section id="contact" class="py-20 md:py-24">
         <div class="container text-center">
             <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800" data-i18n="contact.title">聯絡我們</h2>
             <p class="text-lg text-gray-700 mb-6" data-i18n="contact.desc">如果您對本專案有任何疑問或合作提案，歡迎隨時與我們聯繫。</p>
@@ -188,35 +322,69 @@
                 'nav.about': '關於專案',
                 'nav.features': '核心功能',
                 'nav.tech': '技術堆疊',
+                'nav.proposal': '專案計畫書',
                 'nav.contact': '聯絡我們',
                 'hero.title': '法鼓山智慧導覽App',
                 'hero.subtitle': '將傳統導覽轉化為個人化、AI驅動的互動式體驗。',
                 'hero.cta': '了解更多',
                 'about.title': '關於專案',
-                'about.intro': '本專案旨在開發一款可應用於任何旅遊景點的智慧數位導覽應用程式。以法鼓山園區為範例，我們致力於解決傳統導覽所面臨的挑戰，如靜態內容、高昂的人力與維護成本，並為訪客提供一個現代化、互動式的跨平台導覽體驗。',
-                'about.problem.title': '待解決的問題',
-                'about.problem.1': '**靜態體驗：** 傳統語音導覽缺乏即時情境與個人化。',
-                'about.problem.2': '**物流限制：** 依賴真人導遊，限制了可用性與語言選項。',
-                'about.problem.3': '**維護成本高：** 更新內容是一個耗時的手動過程。',
+                'proposal.execSummary.title': '1. 執行摘要',
+                'proposal.execSummary.content': '本提案概述為新北市法鼓山開發跨平台數位導覽應用程式的計畫。該應用程式將利用現代技術，為遊客在行動裝置和Windows桌面設備上提供互動式、個人化且引人入勝的導覽體驗。透過整合FlutterFlow進行快速UI開發、Supabase作為強大的後端，以及AI提供動態語音導覽，本專案將把傳統導覽轉變為一趟智慧、易於使用且支援多語言的旅程。',
+                'proposal.problem.title': '2. 問題陳述',
+                'proposal.problem.intro': '大型宗教或文化場域的傳統導覽面臨多項挑戰：',
+                'proposal.problem.1': '<strong>靜態體驗：</strong> 預錄的語音導覽和印刷資料缺乏個人化和即時情境。',
+                'proposal.problem.2': '<strong>物流限制：</strong> 對真人導遊的依賴限制了可用性、語言選項和導覽排程。',
+                'proposal.problem.3': '<strong>可及性差距：</strong> 身心障礙或偏好自主探索的遊客可能難以完全投入於場域豐富的歷史與教義中。',
+                'proposal.problem.4': '<strong>維護開銷：</strong> 更新內容（如旁白、事實資訊）是一個耗時的手動過程。',
                 'features.title': '核心功能',
-                'features.icon.map': '🗺️',
-                'features.icon.media': '🖼️',
-                'features.icon.language': '🗣️',
-                'features.1.title': '智慧導覽',
-                'features.1.desc': '結合GPS定位或手動選擇，自動觸發AI生成的語音導覽。',
-                'features.2.title': '互動地圖',
-                'features.2.desc': '提供直觀地圖，標示所有景點，讓使用者輕鬆瀏覽。',
+                'features.1.title': '互動地圖',
+                'features.1.desc': '顯示法鼓山地圖及所有關鍵景點（POIs）。',
+                'features.2.title': 'AI語音導覽',
+                'features.2.desc': '利用大型語言模型（LLM）為每個景點生成獨特、具情境感知能力的描述。',
                 'features.3.title': '多媒體內容',
-                'features.3.desc': '每個景點都配有豐富的圖片、影片和文字解說。',
+                'features.3.desc': '顯示與每個景點相關的高解析度圖片和影片。',
                 'features.4.title': '多語言支援',
-                'features.4.desc': '應用程式介面與語音導覽皆支援多種語言，服務全球訪客。',
+                'features.4.desc': '應用程式介面與AI語音導覽皆支援多種語言。',
                 'tech.title': '技術堆疊',
                 'tech.frontend.title': '前端',
-                'tech.frontend.desc': '使用 **FlutterFlow**，實現跨平台（iOS, Android, Windows）的快速開發，並確保介面統一性。',
+                'tech.frontend.desc': '使用 <strong>FlutterFlow</strong>，實現跨平台（iOS, Android, Windows）的快速開發，並確保介面統一性。其低程式碼/無程式碼的視覺化建構器能大幅縮短前端開發時間，同時保持「一次編寫，到處運行」的優勢。',
                 'tech.backend.title': '後端',
-                'tech.backend.desc': '採用 **Supabase** 作為一體化後端，提供資料庫、身份驗證及無伺服器函數。',
+                'tech.backend.desc': '採用 <strong>Supabase</strong> 作為一體化後端，提供身份驗證、即時資料庫、儲存空間及無伺服器函數。無伺服器函數將用於託管Gemma3n模型並處理對TTS服務的安全API呼叫。',
                 'tech.ai.title': 'AI 核心',
-                'tech.ai.desc': '整合 **Gemma3n** 模型與獨立的 **TTS 服務**，實現動態語音解說。',
+                'tech.ai.desc': '整合 <strong>Gemma3n</strong> 模型與獨立的 <strong>TTS 服務</strong>，實現動態語音解說。Gemma3n將根據精細調整的提示生成獨特內容，再由TTS API轉換為高品質、聽起來自然的音訊。',
+                'proposal.arch.title': '7. 系統架構',
+                'proposal.arch.desc': '系統將遵循主從式架構，以FlutterFlow應用程式作為客戶端。',
+                'proposal.arch.flowchart': `+-----------------+       +-----------------+       +-----------------+\n| FlutterFlow App |       |                 |       |                 |\n| (Mobile/Win)    +------>|   Supabase      +------>|  Gemma3n &      |\n|                 |       | (Backend)       |       |  TTS Service    |\n+-----------------+       |                 |       |                 |\n| - Visual UI             | - Auth          |       +-----------------+\n| - GPS Location          | - Database      |\n| - API Call Logic        | - Storage       |\n|                         | - Serverless Fx |\n+-----------------+       +-----------------+`,
+                'proposal.arch.workflow.title': '工作流程:',
+                'proposal.arch.workflow.1': '<b>地圖顯示：</b> FlutterFlow應用程式從Supabase資料庫獲取地圖資料和景點位置。',
+                'proposal.arch.workflow.2': '<b>觸發：</b> 應用程式的位置服務（行動裝置上的GPS，Windows上的手動點擊）觸發一個請求。',
+                'proposal.arch.workflow.3': '<b>LLM呼叫：</b> 應用程式向Supabase無伺服器函數發送請求。此函數接著安全地呼叫Gemma3n模型以生成旁白文本。',
+                'proposal.arch.workflow.4': '<b>TTS轉換：</b> Supabase函數將文本發送到一個獨立的TTS服務（例如Google Cloud TTS）並接收音訊數據。',
+                'proposal.arch.workflow.5': '<b>音訊播放：</b> FlutterFlow應用程式從Supabase函數接收音訊數據並播放給使用者。',
+                'proposal.ui.title': '8. 使用者介面（UI）線框圖',
+                'proposal.ui.screen1.title': '畫面 1: 地圖與主畫面視圖',
+                'proposal.ui.screen1.1': '<b>版面配置：</b> 法鼓山的全螢幕地圖。',
+                'proposal.ui.screen1.2': '<b>元素：</b> 使用者位置標記（行動裝置）、景點標記（可點擊）、浮動的「導覽路線」按鈕。',
+                'proposal.ui.screen2.title': '畫面 2: 景點（POI）詳細視圖',
+                'proposal.ui.screen2.1': '<b>版面配置：</b> 從螢幕底部滑出的模態視窗或專用頁面。',
+                'proposal.ui.screen2.2': '<b>元素：</b> 景點名稱、圖片庫、旁白播放/暫停按鈕、旁白文字稿、「了解更多」按鈕。',
+                'proposal.ui.screen3.title': '畫面 3: 導覽路線列表',
+                'proposal.ui.screen3.1': '<b>版面配置：</b> 可滾動的預定義導覽路線列表。',
+                'proposal.ui.screen3.2': '<b>元素：</b> 導覽標題、預計時長、包含的景點列表、「開始導覽」按鈕。',
+                'proposal.db.title': '11. 後端資料庫結構',
+                'proposal.db.table1.title': '資料表: pois',
+                'proposal.db.table1.content': `id: UUID (主鍵)\nname_en: TEXT\nname_zh_tw: TEXT\ndescription_en: TEXT\ndescription_zh_tw: TEXT\nlatitude: NUMERIC\nlongitude: NUMERIC\nimage_urls: TEXT[] (來自Supabase儲存的圖片URL陣列)\ntour_route_ids: UUID[] (指向tours資料表的外鍵)`,
+                'proposal.db.table2.title': '資料表: tours',
+                'proposal.db.table2.content': `id: UUID (主鍵)\nname_en: TEXT\nname_zh_tw: TEXT\ndescription_en: TEXT\ndescription_zh_tw: TEXT\npoi_ids: UUID[] (依順序排列的pois ID陣列)\nestimated_time_minutes: INT`,
+                'proposal.phases.title': '12. 開發階段',
+                'proposal.phases.phase1.title': '第一階段：最小可行性產品（MVP）',
+                'proposal.phases.phase1.desc': '<b>時程：</b> 2-3個月。<b>重點：</b> 核心功能。<b>交付成果：</b> 適用於行動裝置和Windows的FlutterFlow應用程式、包含約10個關鍵景點的互動地圖、基本的Supabase資料庫整合、單一語言旁白的功能性Gemma3n和TTS整合。',
+                'proposal.phases.phase2.title': '第二階段：功能增強',
+                'proposal.phases.phase2.desc': '<b>時程：</b> 2-3個月。<b>重點：</b> 改善使用者體驗並增加功能。<b>交付成果：</b> 多語言支援、精選導覽路線功能、離線使用的地圖資料預快取、改進的UI/UX和視覺設計。',
+                'proposal.phases.phase3.title': '第三階段：持續內容與維護',
+                'proposal.phases.phase3.desc': '<b>時程：</b> 發布後。<b>重點：</b> 內容創建和系統維護。<b>交付成果：</b> 用於輕鬆更新景點資料的內容管理系統（CMS）、整合新的多媒體資產、擴展以包含更多景點和新的導覽路線。',
+                'proposal.conclusion.title': '15. 結論',
+                'proposal.conclusion.content': '本提案提出了一項開發最先進數位導覽的全面計畫。結合FlutterFlow的快速開發、Supabase的整合後端，以及Gemma3n強大的人工智慧，將為遊客帶來轉型性且難忘的體驗。此專案不僅將增強參與度，也將為文化與宗教場域的導覽樹立新標竿。',
                 'contact.title': '聯絡我們',
                 'contact.desc': '如果您對本專案有任何疑問或合作提案，歡迎隨時與我們聯繫。',
                 'contact.email': '電子郵件',
@@ -227,35 +395,69 @@
                 'nav.about': 'About',
                 'nav.features': 'Features',
                 'nav.tech': 'Tech Stack',
+                'nav.proposal': 'Project Proposal',
                 'nav.contact': 'Contact Us',
                 'hero.title': 'Dharma Drum Tour Guide App',
                 'hero.subtitle': 'Transforming traditional tours into a personalized, AI-powered interactive experience.',
                 'hero.cta': 'Learn More',
                 'about.title': 'About the Project',
-                'about.intro': 'This project aims to develop a smart digital tour guide application that can be applied to any tourist site. Using Dharma Drum Mountain as a case study, we are committed to solving the challenges of traditional tours, such as static content and high maintenance costs, while providing visitors with a modern, interactive, and cross-platform touring experience.',
-                'about.problem.title': 'Problem Statement',
-                'about.problem.1': '**Static Experience:** Traditional audio guides lack real-time context and personalization.',
-                'about.problem.2': '**Logistical Constraints:** Reliance on human guides limits availability and language options.',
-                'about.problem.3': '**High Maintenance:** Updating content is a time-consuming manual process.',
+                'proposal.execSummary.title': '1. Executive Summary',
+                'proposal.execSummary.content': 'This proposal outlines the development of a cross-platform digital tour guide application for Dharma Drum Mountain, New Taipei City. The application will leverage modern technology to provide visitors with an interactive, personalized, and engaging touring experience on both mobile and Windows desktop devices. By integrating FlutterFlow for rapid UI development, Supabase for a robust backend, and AI for dynamic narrations, the project will transform the traditional tour into an intelligent, accessible, and multilingual journey.',
+                'proposal.problem.title': '2. Problem Statement',
+                'proposal.problem.intro': 'Traditional guided tours at large spiritual or cultural sites face several challenges:',
+                'proposal.problem.1': '<strong>Static Experience:</strong> Pre-recorded audio guides and printed materials lack personalization and real-time context.',
+                'proposal.problem.2': '<strong>Logistical Constraints:</strong> The need for human guides limits availability, language options, and tour scheduling.',
+                'proposal.problem.3': '<strong>Accessibility Gaps:</strong> Visitors with disabilities or those who prefer self-guided exploration may find it difficult to fully engage with the site\'s rich history and teachings.',
+                'proposal.problem.4': '<strong>Maintenance Overhead:</strong> Updating content (e.g., narrations, facts) is a manual and time-consuming process.',
                 'features.title': 'Core Features',
-                'features.icon.map': '🗺️',
-                'features.icon.media': '🖼️',
-                'features.icon.language': '🗣️',
-                'features.1.title': 'Smart Navigation',
-                'features.1.desc': 'Automatically triggers AI-generated audio guides based on GPS or manual selection.',
-                'features.2.title': 'Interactive Map',
-                'features.2.desc': 'Provides an intuitive map with all points of interest for easy browsing.',
+                'features.1.title': 'Interactive Map',
+                'features.1.desc': 'Displays the Dharma Drum Mountain map with all key points of interest (POIs).',
+                'features.2.title': 'AI-Powered Narrations',
+                'features.2.desc': 'Utilizes a Large Language Model (LLM) to generate unique, context-aware descriptions for each POI.',
                 'features.3.title': 'Multimedia Content',
-                'features.3.desc': 'Each point is accompanied by rich images, videos, and text explanations.',
+                'features.3.desc': 'Displays high-resolution images and videos related to each POI.',
                 'features.4.title': 'Multilingual Support',
-                'features.4.desc': 'The app UI and audio guides support multiple languages to serve a global audience.',
+                'features.4.desc': 'Supports multiple languages for both the UI and AI narrations.',
                 'tech.title': 'Tech Stack',
                 'tech.frontend.title': 'Frontend',
-                'tech.frontend.desc': 'Using **FlutterFlow** for rapid cross-platform development (iOS, Android, Windows) and a unified interface.',
+                'tech.frontend.desc': 'Using <strong>FlutterFlow</strong> for rapid cross-platform development (iOS, Android, Windows) and a unified interface. Its Low-Code/No-Code Visual Builder drastically reduces the time required to build the frontend, while maintaining the "write once, run everywhere" advantage.',
                 'tech.backend.title': 'Backend',
-                'tech.backend.desc': 'Using **Supabase** as an all-in-one backend, providing database, authentication, and serverless functions.',
+                'tech.backend.desc': 'Using <strong>Supabase</strong> as an all-in-one backend solution, providing authentication, a real-time database, storage, and serverless functions. Serverless Functions will be used to host the Gemma3n model and handle secure API calls to the TTS service.',
                 'tech.ai.title': 'AI Core',
-                'tech.ai.desc': 'Integrating the **Gemma3n** model with a separate **TTS service** to achieve dynamic audio narration.',
+                'tech.ai.desc': 'Integrating the <strong>Gemma3n</strong> model with a separate <strong>TTS service</strong> to achieve dynamic audio narration. Gemma3n will generate unique narrations based on finely-tuned prompts, which are then converted into high-quality, natural-sounding audio by the TTS API.',
+                'proposal.arch.title': '7. System Architecture',
+                'proposal.arch.desc': 'The system will follow a client-server architecture, with the FlutterFlow application as the client.',
+                'proposal.arch.flowchart': `+-----------------+       +-----------------+       +-----------------+\n| FlutterFlow App |       |                 |       |                 |\n| (Mobile/Win)    +------>|   Supabase      +------>|  Gemma3n &      |\n|                 |       | (Backend)       |       |  TTS Service    |\n+-----------------+       |                 |       |                 |\n| - Visual UI             | - Auth          |       +-----------------+\n| - GPS Location          | - Database      |\n| - API Call Logic        | - Storage       |\n|                         | - Serverless Fx |\n+-----------------+       +-----------------+`,
+                'proposal.arch.workflow.title': 'Workflow:',
+                'proposal.arch.workflow.1': '<b>Map Display:</b> The FlutterFlow app fetches map data and POI locations from the Supabase database.',
+                'proposal.arch.workflow.2': '<b>Trigger:</b> The app\'s location service (GPS on mobile, manual click on Windows) triggers a request.',
+                'proposal.arch.workflow.3': '<b>LLM Call:</b> The app sends a request to a Supabase Serverless Function. This function then securely calls the Gemma3n model to generate the narration text.',
+                'proposal.arch.workflow.4': '<b>TTS Conversion:</b> The Supabase function sends the text to a separate TTS service (e.g., Google Cloud TTS) and receives audio data.',
+                'proposal.arch.workflow.5': '<b>Audio Playback:</b> The FlutterFlow app receives the audio data from the Supabase function and plays it to the user.',
+                'proposal.ui.title': '8. User Interface (UI) Wireframes',
+                'proposal.ui.screen1.title': 'Screen 1: Map & Home View',
+                'proposal.ui.screen1.1': '<b>Layout:</b> Full-screen map of Dharma Drum Mountain.',
+                'proposal.ui.screen1.2': '<b>Elements:</b> User\'s location marker (mobile), POI markers (clickable), floating "Tour Routes" button.',
+                'proposal.ui.screen2.title': 'Screen 2: Point of Interest (POI) Detail View',
+                'proposal.ui.screen2.1': '<b>Layout:</b> A modal or dedicated page that slides up from the bottom of the screen.',
+                'proposal.ui.screen2.2': '<b>Elements:</b> POI name, image gallery, play/pause button for narration, text transcript of the narration, "Learn More" button.',
+                'proposal.ui.screen3.title': 'Screen 3: Tour Routes List',
+                'proposal.ui.screen3.1': '<b>Layout:</b> A scrollable list of pre-defined tour routes.',
+                'proposal.ui.screen3.2': '<b>Elements:</b> Tour title, estimated duration, list of POIs included, a button to "Start Tour."',
+                'proposal.db.title': '11. Backend Database Structure',
+                'proposal.db.table1.title': 'Table: pois',
+                'proposal.db.table1.content': `id: UUID (Primary Key)\nname_en: TEXT\nname_zh_tw: TEXT\ndescription_en: TEXT\ndescription_zh_tw: TEXT\nlatitude: NUMERIC\nlongitude: NUMERIC\nimage_urls: TEXT[] (Array of image URLs from Supabase Storage)\ntour_route_ids: UUID[] (Foreign keys to tours table)`,
+                'proposal.db.table2.title': 'Table: tours',
+                'proposal.db.table2.content': `id: UUID (Primary Key)\nname_en: TEXT\nname_zh_tw: TEXT\ndescription_en: TEXT\ndescription_zh_tw: TEXT\npoi_ids: UUID[] (Array of pois IDs in order)\nestimated_time_minutes: INT`,
+                'proposal.phases.title': '12. Development Phases',
+                'proposal.phases.phase1.title': 'Phase 1: Minimum Viable Product (MVP)',
+                'proposal.phases.phase1.desc': '<b>Timeline:</b> 2-3 months. <b>Focus:</b> Core functionality. <b>Deliverables:</b> FlutterFlow app for mobile and Windows, interactive map with ~10 key POIs, basic Supabase database integration, functional Gemma3n and TTS integration for single-language narrations.',
+                'proposal.phases.phase2.title': 'Phase 2: Feature Enhancement',
+                'proposal.phases.phase2.desc': '<b>Timeline:</b> 2-3 months. <b>Focus:</b> Improving user experience and adding features. <b>Deliverables:</b> Multilingual support, curated tour routes functionality, pre-caching of map data for offline use, improved UI/UX and visual design.',
+                'proposal.phases.phase3.title': 'Phase 3: Ongoing Content & Maintenance',
+                'proposal.phases.phase3.desc': '<b>Timeline:</b> Post-launch. <b>Focus:</b> Content creation and system upkeep. <b>Deliverables:</b> Content management system (CMS) for easy updates to POI data, integration of new multimedia assets, expansion to include more POIs and new tour routes.',
+                'proposal.conclusion.title': '15. Conclusion',
+                'proposal.conclusion.content': 'This proposal presents a comprehensive plan to develop a state-of-the-art digital tour guide. The combination of FlutterFlow\'s rapid development, Supabase\'s integrated backend, and Gemma3n\'s powerful AI will deliver a transformative and memorable experience for visitors. This project will not only enhance engagement but also establish a new standard for cultural and spiritual site tours.',
                 'contact.title': 'Contact Us',
                 'contact.desc': 'If you have any questions or collaboration proposals regarding this project, please feel free to contact us.',
                 'contact.email': 'Email',
@@ -263,7 +465,6 @@
             }
         };
         
-        // Let's start with English as default
         let currentLang = 'en';
 
         const elementsToTranslate = document.querySelectorAll('[data-i18n]');
@@ -285,7 +486,6 @@
             }
         };
 
-        // Set initial language on page load
         setLanguage(currentLang);
 
         const langToggle = document.getElementById('lang-toggle');
@@ -305,7 +505,6 @@
             });
         });
         
-        // Close dropdown if clicked outside
         document.addEventListener('click', function(event) {
             if (!langToggle.contains(event.target) && !langDropdown.contains(event.target)) {
                 langDropdown.classList.add('hidden');
