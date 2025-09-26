@@ -1,399 +1,294 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odoo 資訊系統服務 - SEMICON Taiwan 2025</title>
-    <!-- 載入 Tailwind CSS -->
+    <title>法鼓山智慧導覽App - 專案介紹</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 載入 Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            @apply bg-gray-50 text-gray-800;
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
         }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-            padding-bottom: 0;
-            padding-top: 0;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
-        .accordion-content.open {
-            max-height: 500px; /* 根據內容調整，確保能完全展開 */
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
+        .nav-link {
+            transition: color 0.3s;
         }
-        .rotate-90 {
-            transform: rotate(90deg);
+        .nav-link:hover {
+            color: #0066cc;
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #0066cc;
+            border-radius: 9999px;
+        }
+        .feature-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: white;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
-    <!-- 語言切換按鈕 -->
-    <div class="fixed top-4 right-4 z-50">
-        <button id="lang-toggle-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition duration-300">
-            Switch to English
-        </button>
-    </div>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container flex justify-between items-center py-4">
+            <div class="text-2xl font-bold text-gray-800">
+                <a href="#home">智慧導覽App</a>
+            </div>
+            <div class="flex items-center space-x-4 text-gray-600 font-medium">
+                <a href="#about" class="nav-link">關於專案</a>
+                <a href="#features" class="nav-link">核心功能</a>
+                <a href="#tech-stack" class="nav-link">技術堆疊</a>
+                <a href="#contact" class="nav-link">聯絡我們</a>
+                <div class="relative">
+                    <button id="lang-toggle" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors duration-200">
+                        中/En
+                    </button>
+                    <div id="lang-dropdown" class="absolute right-0 mt-2 w-28 bg-white rounded-lg shadow-xl hidden">
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200" data-lang="zh-Hant">繁體中文</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200" data-lang="en">English</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <!-- 主內容容器 -->
-    <div class="container mx-auto px-4 py-8 md:px-6 lg:px-8">
+    <!-- Hero Section -->
+    <header id="home" class="bg-blue-600 text-white py-24 md:py-32 rounded-b-3xl">
+        <div class="container text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4" data-i18n="hero.title">法鼓山智慧導覽App</h1>
+            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto mb-8" data-i18n="hero.subtitle">將傳統導覽轉化為個人化、AI驅動的互動式體驗。</p>
+            <a href="#features" class="inline-block px-8 py-4 bg-white text-blue-600 font-bold text-lg rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-300" data-i18n="hero.cta">了解更多</a>
+        </div>
+    </header>
 
-        <!-- 英雄區塊 (Hero Section) -->
-        <header id="hero-section" class="text-center py-16 md:py-24 bg-white rounded-3xl shadow-lg mb-12 border border-gray-100">
-            <!-- 內容將由 JavaScript 動態插入 -->
-        </header>
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-24">
+        <div class="container">
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-8" data-i18n="about.title">關於專案</h2>
+            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-lg leading-relaxed">
+                <p class="text-lg text-gray-700 mb-6" data-i18n="about.intro">本專案旨在開發一款可應用於任何旅遊景點的智慧數位導覽應用程式。以法鼓山園區為範例，我們致力於解決傳統導覽所面臨的挑戰，如靜態內容、高昂的人力與維護成本，並為訪客提供一個現代化、互動式的跨平台導覽體驗。</p>
+                <h3 class="text-2xl font-semibold mb-4 text-blue-600" data-i18n="about.problem.title">待解決的問題</h3>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                    <li data-i18n="about.problem.1">**靜態體驗：** 傳統語音導覽缺乏即時情境與個人化。</li>
+                    <li data-i18n="about.problem.2">**物流限制：** 依賴真人導遊，限制了可用性與語言選項。</li>
+                    <li data-i18n="about.problem.3">**維護成本高：** 更新內容是一個耗時的手動過程。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        <!-- SEMICON Taiwan 2025 資訊區塊 -->
-        <section id="semicon-info-section" class="bg-indigo-50 p-8 md:p-12 rounded-3xl shadow-inner mb-12">
-            <!-- 內容將由 JavaScript 動態插入 -->
-        </section>
+    <!-- Features Section -->
+    <section id="features" class="py-20 md:py-24 bg-blue-50">
+        <div class="container">
+            <h2 class="section-title text-3xl md:text-4xl font-bold text-blue-800" data-i18n="features.title">核心功能</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature-card p-6 rounded-2xl shadow-lg text-center">
+                    <div class="text-5xl mb-4 text-blue-600" data-i18n="features.icon.map">🗺️</div>
+                    <h3 class="text-xl font-semibold mb-2" data-i18n="features.1.title">智慧導覽</h3>
+                    <p class="text-gray-600" data-i18n="features.1.desc">結合GPS定位或手動選擇，自動觸發AI生成的語音導覽。</p>
+                </div>
+                <div class="feature-card p-6 rounded-2xl shadow-lg text-center">
+                    <div class="text-5xl mb-4 text-blue-600" data-i18n="features.icon.map">📍</div>
+                    <h3 class="text-xl font-semibold mb-2" data-i18n="features.2.title">互動地圖</h3>
+                    <p class="text-gray-600" data-i18n="features.2.desc">提供直觀地圖，標示所有景點，讓使用者輕鬆瀏覽。</p>
+                </div>
+                <div class="feature-card p-6 rounded-2xl shadow-lg text-center">
+                    <div class="text-5xl mb-4 text-blue-600" data-i18n="features.icon.media">🖼️</div>
+                    <h3 class="text-xl font-semibold mb-2" data-i18n="features.3.title">多媒體內容</h3>
+                    <p class="text-gray-600" data-i18n="features.3.desc">每個景點都配有豐富的圖片、影片和文字解說。</p>
+                </div>
+                <div class="feature-card p-6 rounded-2xl shadow-lg text-center">
+                    <div class="text-5xl mb-4 text-blue-600" data-i18n="features.icon.language">🗣️</div>
+                    <h3 class="text-xl font-semibold mb-2" data-i18n="features.4.title">多語言支援</h3>
+                    <p class="text-gray-600" data-i18n="features.4.desc">應用程式介面與語音導覽皆支援多種語言，服務全球訪客。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- 解決方案概述區塊 -->
-        <section id="solutions-section" class="mb-12">
-            <!-- 內容將由 JavaScript 動態插入 -->
-        </section>
+    <!-- Tech Stack Section -->
+    <section id="tech-stack" class="py-20 md:py-24">
+        <div class="container">
+            <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800" data-i18n="tech.title">技術堆疊</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="p-8 bg-white rounded-2xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600" data-i18n="tech.frontend.title">前端</h3>
+                    <p class="text-gray-700 text-lg" data-i18n="tech.frontend.desc">使用 **FlutterFlow**，實現跨平台（iOS, Android, Windows）的快速開發，並確保介面統一性。</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <img src="https://placehold.co/120x60/3498db/ffffff?text=FlutterFlow" alt="FlutterFlow Logo" class="h-10">
+                    </div>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600" data-i18n="tech.backend.title">後端</h3>
+                    <p class="text-gray-700 text-lg" data-i18n="tech.backend.desc">採用 **Supabase** 作為一體化後端，提供資料庫、身份驗證及無伺服器函數。</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <img src="https://placehold.co/120x60/000000/ffffff?text=Supabase" alt="Supabase Logo" class="h-10">
+                    </div>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600" data-i18n="tech.ai.title">AI 核心</h3>
+                    <p class="text-gray-700 text-lg" data-i18n="tech.ai.desc">整合 **Gemma3n** 模型與獨立的 **TTS 服務**，實現動態語音解說。</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <img src="https://placehold.co/120x60/8844ee/ffffff?text=Gemma3n" alt="Gemma3n Logo" class="h-10">
+                        <img src="https://placehold.co/120x60/3498db/ffffff?text=TTS" alt="TTS Logo" class="h-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Odoo 擴展服務區塊 -->
-        <section id="extended-services-section" class="mb-12">
-            <!-- 內容將由 JavaScript 動態插入 -->
-        </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-24 bg-gray-200">
+        <div class="container text-center">
+            <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800" data-i18n="contact.title">聯絡我們</h2>
+            <p class="text-lg text-gray-700 mb-6" data-i18n="contact.desc">如果您對本專案有任何疑問或合作提案，歡迎隨時與我們聯繫。</p>
+            <div class="flex justify-center items-center space-x-4 text-xl">
+                <a href="mailto:contact@example.com" class="text-blue-600 hover:text-blue-800 transition-colors duration-300" data-i18n="contact.email">電子郵件</a>
+            </div>
+        </div>
+    </section>
 
-        <!-- 回答客戶潛在問題區塊 (可折疊的內容) -->
-        <section id="faq-section" class="mb-12">
-            <!-- 內容將由 JavaScript 動態插入 -->
-        </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-6">
+        <div class="container">
+            <p data-i18n="footer.copyright">&copy; 2024 智慧旅遊導覽App. All rights reserved.</p>
+        </div>
+    </footer>
 
-        <!-- 實施路徑與下一步區塊 -->
-        <section id="implementation-section" class="mb-12">
-            <!-- 內容將由 JavaScript 動態插入 -->
-        </section>
-
-        <!-- 頁尾 -->
-        <footer id="footer-section" class="text-center py-10 border-t border-gray-200 mt-12 text-gray-600">
-            <!-- 內容將由 JavaScript 動態插入 -->
-        </footer>
-    </div>
-
-    <!-- JavaScript 實現多語言切換與可折疊功能 -->
     <script>
-        // 定義網站內容
-        const content = {
-            'zh-TW': {
-                langToggleBtn: "Switch to English",
-                hero: {
-                    title: "專為半導體產業打造的 Odoo 解決方案",
-                    subtitle: "作為 Odoo 實施專家，我專注為半導體相關廠商提供客製化 ERP、CRM 及庫存管理系統，整合未來 LLM（Large Language Models）和 AI Agent 技術，幫助您優化供應鏈、提升生產效率，並在 AI 驅動的產業轉型中領先一步。"
-                },
-                semiconInfo: {
-                    title: "SEMICON Taiwan 2025",
-                    p1: "將於 2025年 9月 10日至 12日，在台北南港展覽館舉行。",
-                    p2: "聚焦 AI 晶片、先進封裝、3DIC、異質整合、矽光子、量子運算等13大技術議題。",
-                    p3: "強調半導體供應鏈安全、綠色製造及地緣戰略挑戰。預計超過 1,200家半導體與科技企業參與。",
-                    p4: "這是台灣半導體產業的關鍵盛會，提供絕佳機會與全球領導廠商交流，探索 AI 時代下的晶片設計與智慧製造應用。"
-                },
-                solutions: {
-                    title: "解決方案概述",
-                    card1: {
-                        title: "Odoo 核心功能",
-                        desc: "Odoo 是一款開源 ERP 系統，涵蓋 CRM（客戶關係管理）、ERP（企業資源規劃）及庫存管理，特別適合半導體產業的複雜生產流程、供應鏈追蹤及合規需求。",
-                        list: ["支援實時庫存追蹤、需求預測、供應商管理及生產排程。", "幫助電子與半導體製造商管理多層供應鏈。", "減少庫存積壓，並確保品質控制。"]
-                    },
-                    card2: {
-                        title: "AI 與 LLM 整合",
-                        desc: "未來可透過 Odoo 的模組（如 LLM Integration Base、AI Agent Orchestration）整合 LLM 和 AI Agent，實現自動化決策。",
-                        list: [
-                            "供應鏈優化：AI Agent 預測供應短缺或需求波動，自動調整採購。",
-                            "生產預測與維護：整合生成式 AI 進行智慧製造排程與預測性維護。",
-                            "CRM 智能化：AI 聊天機器人處理客戶查詢、生成銷售報告。",
-                            "多代理工作流：建構多 AI Agent 系統，提升整體業務效率。"
-                        ]
-                    },
-                    note: "這套解決方案可從 Odoo 18 開始部署，逐步擴展 AI 功能，確保與半導體產業的綠色製造及供應鏈安全需求對齊。"
-                },
-                extendedServices: {
-                    title: "Odoo 擴展服務：半導體產業專屬模組",
-                    subtitle: "除了核心的 ERP、CRM 與庫存管理，我們提供更多客製化模組，以解決半導體製造與供應鏈的獨特挑戰。",
-                    cards: [
-                        { title: "專案與知識管理 (Project & Documents)", desc: "針對 **IC 設計**與 **EDA 軟體**廠商，有效管理從概念到驗證的複雜研發專案，確保設計檔案、知識產權與研發進度的高度可追溯性與安全性。" },
-                        { title: "智慧製造與維護 (MRP & Maintenance)", desc: "為 **晶圓代工**、**設備製造**與**封裝測試**廠商提供精準的物料需求規劃（MRP），並透過預防性維護，最大化生產設備（如蝕刻機、微影機）的稼動率，減少非預期停機。" },
-                        { title: "供應鏈與品質追溯 (Purchase & Quality)", desc: "幫助 **材料**、**化學品**與**關鍵零件**供應商管理全球多層次供應鏈，從採購到出貨，全程追溯產品批次，確保品質與合規，並能應對地緣政治風險。" },
-                        { title: "銷售與客戶服務 (Sales & Field Service)", desc: "協助**設備商**或**測試服務**供應商管理銷售管道、處理售後服務與技術支援，並透過 **現場服務** 模組，即時追蹤工程師的派工與任務狀態。" },
-                        { title: "永續性與綠色製造 (Sustainability)", desc: "結合 **會計**、**庫存**與 **IoT** 模組，協助企業追蹤碳排放、能源與水資源消耗，並生成 ESG 報告，符合國際綠色製造與供應鏈的合規要求。" },
-                        { title: "彈性化部署與擴展", desc: "Odoo 的模組化設計讓 **新創公司** 能從小規模導入核心 ERP 功能，再根據業務成長與需求，逐步擴展至更多模組，實現低成本、高效益的數位轉型。" }
-                    ]
-                },
-                faq: {
-                    title: "回答客戶潛在問題",
-                    subtitle: "以下是針對半導體廠商可能提出的三個關鍵問題的回應腳本，您可以直接在 SEMICON Taiwan 展會中使用這些內容，作為銷售對話的基礎。",
-                    questions: [
-                        {
-                            title: "1. 為什麼要買？ (Why Buy?)",
-                            content: [
-                                "在半導體產業，供應鏈複雜、生產週期長、庫存波動大，傳統系統往往無法應對 AI 時代的挑戰。Odoo 提供一體化 ERP/CRM/庫存解決方案，能實時追蹤晶圓製造流程、優化材料管理，並符合 ESG 合規需求，幫助您減少庫存成本20-30%、加速訂單處理，並提升客戶滿意度。",
-                                "更重要的是，Odoo 可無縫整合 LLM 和 AI Agent，例如自動預測供應鏈中斷或優化生產排程，讓您的業務從被動管理轉為主動智能決策。在 SEMICON Taiwan 聚焦的 AI 晶片與異質整合趨勢下，這能讓您領先競爭對手，抓住量子運算與高頻寬記憶體的商機。",
-                                "不買的話，您可能錯失 AI 驅動的效率提升，導致成本上升與市場落後。"
-                            ]
-                        },
-                        {
-                            title: "2. 為什麼要跟我買？ (Why Buy from Me?)",
-                            content: [
-                                "我不僅是 Odoo 實施專家，還專注台灣半導體產業，了解本地供應鏈挑戰（如地緣風險與綠色製造）。我提供客製化服務，從需求評估到部署、培訓及後續支援，全程本地化，確保系統快速上線（通常 3-6 個月）。與一般供應商不同，我整合先進 AI Agent（如基於 LangChain 的多代理系統），能為您的 IC 設計或晶圓製造流程量身打造，例如 AI 驅動的品質檢測或銷售預測。",
-                                "許多電子製造客戶已透過我的方案降低 15% 運營成本，且我提供免費初步諮詢與 POC（Proof of Concept），讓您零風險體驗。",
-                                "選擇我，您獲得的不只是軟體，而是產業專屬的轉型夥伴。"
-                            ]
-                        },
-                        {
-                            title: "3. 為什麼現在買？ (Why Now?)",
-                            content: [
-                                "SEMICON Taiwan 2025 正值產業 AI 轉型高峰，全球半導體廠商聚焦供應鏈韌性與智慧製造，若現在導入 Odoo + AI 整合，您能立即應用於展會後的業務擴張，例如優化 HBM 記憶體生產或矽光子應用。AI 技術如 LLM Agent 已成熟（Odoo 模組支援多 LLM 整合），延遲可能讓您錯失 2025 年底的市場機會，加上地緣戰略挑戰，現在強化 ERP/CRM 是確保競爭力的關鍵。",
-                                "展會期間我可提供特惠實施方案，幫助您在 3 個月內上線，抓住 AI 浪潮。",
-                                "等到明年，成本與風險只會更高。"
-                            ]
-                        }
-                    ]
-                },
-                implementation: {
-                    title: "實施路徑與下一步",
-                    p1: { title: "階段一：免費評估", desc: "評估您的需求，建置 Odoo 基本系統（ERP/CRM/庫存）。" },
-                    p2: { title: "階段二：整合 AI Agent", desc: "例如銷售 + 庫存的多代理工作流，逐步擴展功能。" },
-                    p3: { title: "投資回報", desc: "預計 6-12 個月內回收成本，透過效率提升實現 20%+ ROI。" }
-                },
-                footer: {
-                    p1: "歡迎在 SEMICON Taiwan 展會現場討論，或提供更多細節，我可調整提案！",
-                    p2: "版權所有 &copy; 2025 Odoo 資訊服務"
-                }
+        const translations = {
+            'zh-Hant': {
+                'hero.title': '法鼓山智慧導覽App',
+                'hero.subtitle': '將傳統導覽轉化為個人化、AI驅動的互動式體驗。',
+                'hero.cta': '了解更多',
+                'about.title': '關於專案',
+                'about.intro': '本專案旨在開發一款可應用於任何旅遊景點的智慧數位導覽應用程式。以法鼓山園區為範例，我們致力於解決傳統導覽所面臨的挑戰，如靜態內容、高昂的人力與維護成本，並為訪客提供一個現代化、互動式的跨平台導覽體驗。',
+                'about.problem.title': '待解決的問題',
+                'about.problem.1': '**靜態體驗：** 傳統語音導覽缺乏即時情境與個人化。',
+                'about.problem.2': '**物流限制：** 依賴真人導遊，限制了可用性與語言選項。',
+                'about.problem.3': '**維護成本高：** 更新內容是一個耗時的手動過程。',
+                'features.title': '核心功能',
+                'features.icon.map': '🗺️',
+                'features.icon.media': '🖼️',
+                'features.icon.language': '🗣️',
+                'features.1.title': '智慧導覽',
+                'features.1.desc': '結合GPS定位或手動選擇，自動觸發AI生成的語音導覽。',
+                'features.2.title': '互動地圖',
+                'features.2.desc': '提供直觀地圖，標示所有景點，讓使用者輕鬆瀏覽。',
+                'features.3.title': '多媒體內容',
+                'features.3.desc': '每個景點都配有豐富的圖片、影片和文字解說。',
+                'features.4.title': '多語言支援',
+                'features.4.desc': '應用程式介面與語音導覽皆支援多種語言，服務全球訪客。',
+                'tech.title': '技術堆疊',
+                'tech.frontend.title': '前端',
+                'tech.frontend.desc': '使用 **FlutterFlow**，實現跨平台（iOS, Android, Windows）的快速開發，並確保介面統一性。',
+                'tech.backend.title': '後端',
+                'tech.backend.desc': '採用 **Supabase** 作為一體化後端，提供資料庫、身份驗證及無伺服器函數。',
+                'tech.ai.title': 'AI 核心',
+                'tech.ai.desc': '整合 **Gemma3n** 模型與獨立的 **TTS 服務**，實現動態語音解說。',
+                'contact.title': '聯絡我們',
+                'contact.desc': '如果您對本專案有任何疑問或合作提案，歡迎隨時與我們聯繫。',
+                'contact.email': '電子郵件',
+                'footer.copyright': '© 2024 智慧旅遊導覽App. All rights reserved.'
             },
-            'en-US': {
-                langToggleBtn: "切換為中文",
-                hero: {
-                    title: "Odoo Solutions Tailored for the Semiconductor Industry",
-                    subtitle: "As an Odoo implementation expert, I specialize in providing customized ERP, CRM, and inventory management systems for semiconductor-related companies. By integrating future LLM and AI Agent technologies, we help you optimize your supply chain, boost production efficiency, and stay ahead in the AI-driven industry transformation."
-                },
-                semiconInfo: {
-                    title: "SEMICON Taiwan 2025",
-                    p1: "To be held from September 10 to 12, 2025, at the Taipei Nangang Exhibition Center.",
-                    p2: "Focusing on 13 key technology topics, including AI chips, advanced packaging, 3DIC, heterogeneous integration, silicon photonics, and quantum computing.",
-                    p3: "Emphasizing semiconductor supply chain security, green manufacturing, and geopolitical challenges. Over 1,200 semiconductor and technology companies are expected to participate.",
-                    p4: "This is a pivotal event for Taiwan's semiconductor industry, offering an excellent opportunity to network with global leaders and explore chip design and smart manufacturing applications in the AI era."
-                },
-                solutions: {
-                    title: "Solution Overview",
-                    card1: {
-                        title: "Odoo Core Features",
-                        desc: "Odoo is an open-source ERP system that covers CRM (Customer Relationship Management), ERP (Enterprise Resource Planning), and inventory management. It is particularly suitable for the complex production processes, supply chain tracking, and compliance needs of the semiconductor industry.",
-                        list: ["Supports real-time inventory tracking, demand forecasting, supplier management, and production scheduling.", "Helps electronic and semiconductor manufacturers manage multi-tiered supply chains.", "Reduces inventory backlogs and ensures quality control."]
-                    },
-                    card2: {
-                        title: "AI & LLM Integration",
-                        desc: "Odoo modules (such as LLM Integration Base, AI Agent Orchestration) can be integrated to leverage LLMs and AI Agents, enabling automated decision-making.",
-                        list: [
-                            "Supply Chain Optimization: AI Agents predict supply shortages or demand fluctuations and automatically adjust procurement.",
-                            "Production Forecasting & Maintenance: Integrate generative AI for smart manufacturing scheduling and predictive maintenance.",
-                            "Smart CRM: AI chatbots handle customer inquiries and generate sales reports.",
-                            "Multi-Agent Workflow: Build a multi-AI Agent system to enhance overall business efficiency."
-                        ]
-                    },
-                    note: "This solution can be deployed starting from Odoo 18, with AI functionalities gradually expanded to align with the green manufacturing and supply chain security needs of the semiconductor industry."
-                },
-                extendedServices: {
-                    title: "Odoo Extended Services: Semiconductor Industry Modules",
-                    subtitle: "In addition to core ERP, CRM, and inventory management, we offer more customized modules to address the unique challenges of semiconductor manufacturing and supply chains.",
-                    cards: [
-                        { title: "Project & Documents Management", desc: "For **IC design** and **EDA software** companies, efficiently manage complex R&D projects from concept to validation, ensuring high traceability and security of design files, intellectual property, and project progress." },
-                        { title: "Smart Manufacturing & Maintenance", desc: "Provides precise Material Requirements Planning (MRP) for **foundries**, **equipment manufacturers** and **packaging & testing** companies, and maximizes the uptime of production equipment (like etchers, lithography machines) through predictive maintenance, reducing unexpected downtime." },
-                        { title: "Supply Chain & Quality Traceability", desc: "Helps **materials**, **chemicals**, and **critical components** suppliers manage global, multi-tiered supply chains. It ensures full traceability of product batches from procurement to shipping, guaranteeing quality and compliance while mitigating geopolitical risks." },
-                        { title: "Sales & Customer Service", desc: "Assists **equipment suppliers** or **testing service** providers in managing sales pipelines, handling after-sales service and technical support. The **Field Service** module enables real-time tracking of technician assignments and task status." },
-                        { title: "Sustainability & Green Manufacturing", desc: "Combines **Accounting**, **Inventory**, and **IoT** modules to help companies track carbon emissions, energy, and water consumption, and generate ESG reports to comply with international green manufacturing and supply chain requirements." },
-                        { title: "Flexible Deployment & Scalability", desc: "Odoo's modular design allows **startups** to begin with a small-scale implementation of core ERP functions, and then gradually expand to more modules as their business grows, achieving low-cost and high-efficiency digital transformation." }
-                    ]
-                },
-                faq: {
-                    title: "Answering Potential Customer Questions",
-                    subtitle: "Here are scripts for three key questions that semiconductor companies might ask. You can use these contents as a basis for your sales conversations at the SEMICON Taiwan exhibition.",
-                    questions: [
-                        {
-                            title: "1. Why Buy?",
-                            content: [
-                                "In the semiconductor industry, with its complex supply chains, long production cycles, and volatile inventory, traditional systems often fall short in the face of AI-era challenges. Odoo offers a unified ERP/CRM/inventory solution that provides real-time tracking of wafer fabrication processes, optimizes material management, and ensures ESG compliance. This helps you reduce inventory costs by 20-30%, speed up order processing, and enhance customer satisfaction.",
-                                "More importantly, Odoo seamlessly integrates LLMs and AI Agents, for example, to automatically predict supply chain disruptions or optimize production schedules. This shifts your business from passive management to proactive, intelligent decision-making. As SEMICON Taiwan focuses on AI chips and heterogeneous integration, this gives you a competitive edge to seize opportunities in quantum computing and HBM.",
-                                "If you don't buy, you might miss out on AI-driven efficiency gains, leading to higher costs and falling behind in the market."
-                            ]
-                        },
-                        {
-                            title: "2. Why Buy from Me?",
-                            content: [
-                                "I am not just an Odoo implementation expert; I specialize in the Taiwanese semiconductor industry and understand local supply chain challenges like geopolitical risks and green manufacturing. I offer customized services, from needs assessment to deployment, training, and ongoing support, all localized to ensure a fast system go-live (typically 3-6 months). Unlike general vendors, I integrate advanced AI Agents (such as LangChain-based multi-agent systems) to tailor solutions for your IC design or wafer manufacturing processes, including AI-driven quality inspection or sales forecasting.",
-                                "Many of my electronics manufacturing clients have already reduced their operational costs by 15% with my solutions, and I offer free initial consultations and POCs (Proof of Concept) so you can experience a zero-risk approach.",
-                                "By choosing me, you're not just getting software—you're getting a dedicated partner for industry-specific transformation."
-                            ]
-                        },
-                        {
-                            title: "3. Why Now?",
-                            content: [
-                                "SEMICON Taiwan 2025 marks the peak of the industry's AI transformation. As global semiconductor companies focus on supply chain resilience and smart manufacturing, implementing Odoo + AI integration now allows you to immediately apply it to your post-exhibition business expansion, such as optimizing HBM production or silicon photonics applications. AI technologies like LLM Agent are mature (Odoo modules support multi-LLM integration). Delaying could mean missing out on market opportunities by late 2025. Given geopolitical challenges, strengthening your ERP/CRM is crucial for maintaining a competitive edge.",
-                                "During the exhibition, I can offer special implementation packages to help you go live within 3 months and catch the AI wave.",
-                                "Waiting until next year will only lead to higher costs and risks."
-                            ]
-                        }
-                    ]
-                },
-                implementation: {
-                    title: "Implementation Roadmap & Next Steps",
-                    p1: { title: "Phase One: Free Assessment", desc: "Assess your needs and set up the basic Odoo system (ERP/CRM/Inventory)." },
-                    p2: { title: "Phase Two: AI Agent Integration", desc: "For example, a multi-agent workflow for sales and inventory, with gradual feature expansion." },
-                    p3: { title: "Return on Investment", desc: "Anticipate cost recovery within 6-12 months, achieving 20%+ ROI through efficiency gains." }
-                },
-                footer: {
-                    p1: "Feel free to discuss at the SEMICON Taiwan exhibition, or provide more details so I can refine the proposal!",
-                    p2: "Copyright &copy; 2025 Odoo Information Services"
-                }
+            'en': {
+                'hero.title': 'Dharma Drum Tour Guide App',
+                'hero.subtitle': 'Transforming traditional tours into a personalized, AI-powered interactive experience.',
+                'hero.cta': 'Learn More',
+                'about.title': 'About the Project',
+                'about.intro': 'This project aims to develop a smart digital tour guide application that can be applied to any tourist site. Using Dharma Drum Mountain as a case study, we are committed to solving the challenges of traditional tours, such as static content and high maintenance costs, while providing visitors with a modern, interactive, and cross-platform touring experience.',
+                'about.problem.title': 'Problem Statement',
+                'about.problem.1': '**Static Experience:** Traditional audio guides lack real-time context and personalization.',
+                'about.problem.2': '**Logistical Constraints:** Reliance on human guides limits availability and language options.',
+                'about.problem.3': '**High Maintenance:** Updating content is a time-consuming manual process.',
+                'features.title': 'Core Features',
+                'features.icon.map': '🗺️',
+                'features.icon.media': '🖼️',
+                'features.icon.language': '🗣️',
+                'features.1.title': 'Smart Navigation',
+                'features.1.desc': 'Automatically triggers AI-generated audio guides based on GPS or manual selection.',
+                'features.2.title': 'Interactive Map',
+                'features.2.desc': 'Provides an intuitive map with all points of interest for easy browsing.',
+                'features.3.title': 'Multimedia Content',
+                'features.3.desc': 'Each point is accompanied by rich images, videos, and text explanations.',
+                'features.4.title': 'Multilingual Support',
+                'features.4.desc': 'The app UI and audio guides support multiple languages to serve a global audience.',
+                'tech.title': 'Tech Stack',
+                'tech.frontend.title': 'Frontend',
+                'tech.frontend.desc': 'Using **FlutterFlow** for rapid cross-platform development (iOS, Android, Windows) and a unified interface.',
+                'tech.backend.title': 'Backend',
+                'tech.backend.desc': 'Using **Supabase** as an all-in-one backend, providing database, authentication, and serverless functions.',
+                'tech.ai.title': 'AI Core',
+                'tech.ai.desc': 'Integrating the **Gemma3n** model with a separate **TTS service** to achieve dynamic audio narration.',
+                'contact.title': 'Contact Us',
+                'contact.desc': 'If you have any questions or collaboration proposals regarding this project, please feel free to contact us.',
+                'contact.email': 'Email',
+                'footer.copyright': '© 2024 Smart Tour Guide App. All rights reserved.'
             }
         };
 
-        let currentLang = 'zh-TW';
+        const currentLang = 'zh-Hant';
+        const elementsToTranslate = document.querySelectorAll('[data-i18n]');
 
-        function renderContent(lang) {
-            const langData = content[lang];
-            
-            // Render Hero Section
-            document.getElementById('hero-section').innerHTML = `
-                <h1 class="text-4xl md:text-5xl font-bold text-indigo-700 leading-tight">${langData.hero.title}</h1>
-                <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-gray-600">${langData.hero.subtitle}</p>
-            `;
-
-            // Render SEMICON Info Section
-            document.getElementById('semicon-info-section').innerHTML = `
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-800 mb-6">${langData.semiconInfo.title}</h2>
-                <div class="text-center text-lg text-indigo-700 font-medium space-y-2">
-                    <p>${langData.semiconInfo.p1}</p>
-                    <p>${langData.semiconInfo.p2}</p>
-                    <p class="text-sm text-indigo-600">${langData.semiconInfo.p3}</p>
-                </div>
-                <p class="mt-6 text-center text-gray-600 max-w-3xl mx-auto leading-relaxed">${langData.semiconInfo.p4}</p>
-            `;
-
-            // Render Solutions Section
-            document.getElementById('solutions-section').innerHTML = `
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">${langData.solutions.title}</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 transition-transform duration-300 hover:scale-[1.02]">
-                        <h3 class="text-2xl font-semibold text-indigo-600 mb-4">${langData.solutions.card1.title}</h3>
-                        <p class="text-gray-700 leading-relaxed mb-4">${langData.solutions.card1.desc}</p>
-                        <ul class="list-disc list-inside space-y-2 text-gray-600">
-                            ${langData.solutions.card1.list.map(item => `<li>${item}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 transition-transform duration-300 hover:scale-[1.02]">
-                        <h3 class="text-2xl font-semibold text-indigo-600 mb-4">${langData.solutions.card2.title}</h3>
-                        <p class="text-gray-700 leading-relaxed mb-4">${langData.solutions.card2.desc}</p>
-                        <ul class="list-disc list-inside space-y-2 text-gray-600">
-                            ${langData.solutions.card2.list.map(item => `<li><span class="font-medium text-indigo-600">${item.split('：')[0]}：</span>${item.split('：')[1] || item}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-                <p class="mt-8 text-center text-gray-600">${langData.solutions.note}</p>
-            `;
-
-            // Render Extended Services Section
-            document.getElementById('extended-services-section').innerHTML = `
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">${langData.extendedServices.title}</h2>
-                <p class="text-center text-gray-600 mb-6 max-w-3xl mx-auto">${langData.extendedServices.subtitle}</p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    ${langData.extendedServices.cards.map(card => `
-                        <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 transition-transform duration-300 hover:scale-[1.02]">
-                            <h3 class="text-2xl font-semibold text-indigo-600 mb-4">${card.title}</h3>
-                            <p class="text-gray-700 leading-relaxed">${card.desc}</p>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-
-            // Render FAQ Section
-            document.getElementById('faq-section').innerHTML = `
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">${langData.faq.title}</h2>
-                <p class="text-center text-gray-600 mb-6 max-w-3xl mx-auto">${langData.faq.subtitle}</p>
-                <div id="accordion-container" class="space-y-4">
-                    ${langData.faq.questions.map((q, index) => `
-                        <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-                            <button class="accordion-header w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-indigo-800 focus:outline-none" onclick="toggleAccordion(this)">
-                                <span>${q.title}</span>
-                                <svg class="w-6 h-6 transform transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                            <div class="accordion-content p-6 pt-0 text-gray-600 leading-relaxed">
-                                ${q.content.map((p, pIndex) => `<p ${pIndex === 1 || pIndex === 2 ? 'class="mt-4"' : ''}>${p}</p>`).join('')}
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            
-            // Render Implementation Section
-            document.getElementById('implementation-section').innerHTML = `
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">${langData.implementation.title}</h2>
-                <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex-1 transition-transform duration-300 hover:scale-[1.02]">
-                        <h3 class="font-semibold text-xl text-indigo-600 mb-2">${langData.implementation.p1.title}</h3>
-                        <p class="text-gray-600">${langData.implementation.p1.desc}</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex-1 transition-transform duration-300 hover:scale-[1.02]">
-                        <h3 class="font-semibold text-xl text-indigo-600 mb-2">${langData.implementation.p2.title}</h3>
-                        <p class="text-gray-600">${langData.implementation.p2.desc}</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex-1 transition-transform duration-300 hover:scale-[1.02]">
-                        <h3 class="font-semibold text-xl text-indigo-600 mb-2">${langData.implementation.p3.title}</h3>
-                        <p class="text-gray-600">${langData.implementation.p3.desc}</p>
-                    </div>
-                </div>
-            `;
-            
-            // Render Footer Section
-            document.getElementById('footer-section').innerHTML = `
-                <p class="mb-2">${langData.footer.p1}</p>
-                <p>${langData.footer.p2}</p>
-            `;
-            
-            // 更新語言切換按鈕文本
-            document.getElementById('lang-toggle-btn').textContent = langData.langToggleBtn;
-        }
-
-        // 處理手風琴效果
-        function toggleAccordion(button) {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('svg');
-            
-            // 關閉所有其他開啟的內容
-            const allContents = document.querySelectorAll('.accordion-content.open');
-            allContents.forEach(item => {
-                if (item !== content) {
-                    item.classList.remove('open');
-                    item.previousElementSibling.querySelector('svg').classList.remove('rotate-90');
+        const setLanguage = (lang) => {
+            elementsToTranslate.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
                 }
             });
+            document.documentElement.lang = lang;
+            const titleElement = document.querySelector('title');
+            if (lang === 'en') {
+                titleElement.textContent = 'Dharma Drum Tour App - Project Introduction';
+            } else {
+                titleElement.textContent = '法鼓山智慧導覽App - 專案介紹';
+            }
+        };
 
-            // 切換當前內容的顯示/隱藏
-            content.classList.toggle('open');
-            icon.classList.toggle('rotate-90');
-        }
+        setLanguage(currentLang);
 
-        // 初始載入時渲染中文內容
-        document.addEventListener('DOMContentLoaded', () => {
-            renderContent(currentLang);
+        const langToggle = document.getElementById('lang-toggle');
+        const langDropdown = document.getElementById('lang-dropdown');
+        langToggle.addEventListener('click', () => {
+            langDropdown.classList.toggle('hidden');
         });
 
-        // 監聽語言切換按鈕點擊事件
-        document.getElementById('lang-toggle-btn').addEventListener('click', () => {
-            currentLang = currentLang === 'zh-TW' ? 'en-US' : 'zh-TW';
-            renderContent(currentLang);
+        langDropdown.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = e.target.getAttribute('data-lang');
+                setLanguage(lang);
+                langDropdown.classList.add('hidden');
+            });
         });
-
     </script>
 </body>
 </html>
+```
