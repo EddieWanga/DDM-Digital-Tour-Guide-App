@@ -58,13 +58,13 @@
     <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="container flex justify-between items-center py-4">
             <div class="text-2xl font-bold text-gray-800">
-                <a href="#home">智慧導覽App</a>
+                <a href="#home" data-i18n="nav.title">智慧導覽App</a>
             </div>
             <div class="flex items-center space-x-4 text-gray-600 font-medium">
-                <a href="#about" class="nav-link">關於專案</a>
-                <a href="#features" class="nav-link">核心功能</a>
-                <a href="#tech-stack" class="nav-link">技術堆疊</a>
-                <a href="#contact" class="nav-link">聯絡我們</a>
+                <a href="#about" class="nav-link" data-i18n="nav.about">關於專案</a>
+                <a href="#features" class="nav-link" data-i18n="nav.features">核心功能</a>
+                <a href="#tech-stack" class="nav-link" data-i18n="nav.tech">技術堆疊</a>
+                <a href="#contact" class="nav-link" data-i18n="nav.contact">聯絡我們</a>
                 <div class="relative">
                     <button id="lang-toggle" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors duration-200">
                         中/En
@@ -140,22 +140,22 @@
                 <div class="p-8 bg-white rounded-2xl shadow-lg">
                     <h3 class="text-2xl font-bold mb-4 text-blue-600" data-i18n="tech.frontend.title">前端</h3>
                     <p class="text-gray-700 text-lg" data-i18n="tech.frontend.desc">使用 **FlutterFlow**，實現跨平台（iOS, Android, Windows）的快速開發，並確保介面統一性。</p>
-                    <div class="mt-4 flex justify-center space-x-4">
-                        <img src="https://placehold.co/120x60/3498db/ffffff?text=FlutterFlow" alt="FlutterFlow Logo" class="h-10">
+                    <div class="mt-4 flex justify-center items-center space-x-4 h-12">
+                        <img src="flutterflow.png" alt="FlutterFlow Logo" class="h-full w-auto">
                     </div>
                 </div>
                 <div class="p-8 bg-white rounded-2xl shadow-lg">
                     <h3 class="text-2xl font-bold mb-4 text-blue-600" data-i18n="tech.backend.title">後端</h3>
                     <p class="text-gray-700 text-lg" data-i18n="tech.backend.desc">採用 **Supabase** 作為一體化後端，提供資料庫、身份驗證及無伺服器函數。</p>
-                    <div class="mt-4 flex justify-center space-x-4">
-                        <img src="https://placehold.co/120x60/000000/ffffff?text=Supabase" alt="Supabase Logo" class="h-10">
+                    <div class="mt-4 flex justify-center items-center space-x-4 h-12">
+                        <img src="supabase-logo_brandlogos.net_wahxg-scaled.png" alt="Supabase Logo" class="h-full w-auto">
                     </div>
                 </div>
                 <div class="p-8 bg-white rounded-2xl shadow-lg">
                     <h3 class="text-2xl font-bold mb-4 text-blue-600" data-i18n="tech.ai.title">AI 核心</h3>
                     <p class="text-gray-700 text-lg" data-i18n="tech.ai.desc">整合 **Gemma3n** 模型與獨立的 **TTS 服務**，實現動態語音解說。</p>
-                    <div class="mt-4 flex justify-center space-x-4">
-                        <img src="https://placehold.co/120x60/8844ee/ffffff?text=Gemma3n" alt="Gemma3n Logo" class="h-10">
+                    <div class="mt-4 flex justify-center items-center space-x-4 h-12">
+                        <img src="gemma3+.png" alt="Gemma3n Logo" class="h-full w-auto">
                         <img src="https://placehold.co/120x60/3498db/ffffff?text=TTS" alt="TTS Logo" class="h-10">
                     </div>
                 </div>
@@ -184,6 +184,11 @@
     <script>
         const translations = {
             'zh-Hant': {
+                'nav.title': '智慧導覽App',
+                'nav.about': '關於專案',
+                'nav.features': '核心功能',
+                'nav.tech': '技術堆疊',
+                'nav.contact': '聯絡我們',
                 'hero.title': '法鼓山智慧導覽App',
                 'hero.subtitle': '將傳統導覽轉化為個人化、AI驅動的互動式體驗。',
                 'hero.cta': '了解更多',
@@ -218,6 +223,11 @@
                 'footer.copyright': '© 2024 智慧旅遊導覽App. All rights reserved.'
             },
             'en': {
+                'nav.title': 'Smart Tour App',
+                'nav.about': 'About',
+                'nav.features': 'Features',
+                'nav.tech': 'Tech Stack',
+                'nav.contact': 'Contact Us',
                 'hero.title': 'Dharma Drum Tour Guide App',
                 'hero.subtitle': 'Transforming traditional tours into a personalized, AI-powered interactive experience.',
                 'hero.cta': 'Learn More',
@@ -252,11 +262,14 @@
                 'footer.copyright': '© 2024 Smart Tour Guide App. All rights reserved.'
             }
         };
+        
+        // Let's start with English as default
+        let currentLang = 'en';
 
-        const currentLang = 'zh-Hant';
         const elementsToTranslate = document.querySelectorAll('[data-i18n]');
 
         const setLanguage = (lang) => {
+            currentLang = lang;
             elementsToTranslate.forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
@@ -272,6 +285,7 @@
             }
         };
 
+        // Set initial language on page load
         setLanguage(currentLang);
 
         const langToggle = document.getElementById('lang-toggle');
@@ -284,11 +298,20 @@
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const lang = e.target.getAttribute('data-lang');
-                setLanguage(lang);
+                if (lang !== currentLang) {
+                   setLanguage(lang);
+                }
                 langDropdown.classList.add('hidden');
             });
+        });
+        
+        // Close dropdown if clicked outside
+        document.addEventListener('click', function(event) {
+            if (!langToggle.contains(event.target) && !langDropdown.contains(event.target)) {
+                langDropdown.classList.add('hidden');
+            }
         });
     </script>
 </body>
 </html>
-```
+
